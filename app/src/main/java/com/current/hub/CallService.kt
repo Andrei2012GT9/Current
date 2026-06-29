@@ -73,11 +73,22 @@ class CallService : InCallService() {
         
         updateNotification(call)
         
+<<<<<<< HEAD
         val intent = Intent(this, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         }
         startActivity(intent)
+=======
+        val powerManager = getSystemService(android.content.Context.POWER_SERVICE) as android.os.PowerManager
+        if (!powerManager.isInteractive) {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+            startActivity(intent)
+        }
+>>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
     }
 
     override fun onCallRemoved(call: Call) {
@@ -101,8 +112,13 @@ class CallService : InCallService() {
                 "Active Calls",
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
+<<<<<<< HEAD
                 setSound(null, null)
                 enableVibration(false)
+=======
+                // We keep sound null as Telecom handles ringing, but allow vibration
+                enableVibration(true)
+>>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
             }
             notificationManager.createNotificationChannel(channel)
         }

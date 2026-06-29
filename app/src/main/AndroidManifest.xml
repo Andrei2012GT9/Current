@@ -37,6 +37,13 @@
             android:theme="@style/Theme.Current"
             android:launchMode="singleInstance">
             <intent-filter>
+<<<<<<< HEAD
+=======
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+>>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
                 <action android:name="android.intent.action.DIAL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -63,6 +70,7 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
         <!-- Dynamic Icon Aliases -->
         <activity-alias
             android:name="com.current.hub.MainActivityDefault"
@@ -129,6 +137,8 @@
             </intent-filter>
         </activity-alias>
 
+=======
+>>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
         <activity
             android:name="com.current.hub.ComposeSmsActivity"
             android:exported="true">
