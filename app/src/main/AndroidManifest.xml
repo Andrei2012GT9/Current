@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -20,6 +19,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -33,17 +35,13 @@
         <activity
             android:name="com.current.hub.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Current"
             android:launchMode="singleInstance">
             <intent-filter>
-<<<<<<< HEAD
-=======
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
->>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
                 <action android:name="android.intent.action.DIAL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -70,8 +68,6 @@
             </intent-filter>
         </activity>
 
-<<<<<<< HEAD
-        <!-- Dynamic Icon Aliases -->
         <activity-alias
             android:name="com.current.hub.MainActivityDefault"
             android:enabled="true"
@@ -137,8 +133,6 @@
             </intent-filter>
         </activity-alias>
 
-=======
->>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
         <activity
             android:name="com.current.hub.ComposeSmsActivity"
             android:exported="true">
