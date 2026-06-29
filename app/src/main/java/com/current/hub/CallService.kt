@@ -28,7 +28,7 @@ class CallService : InCallService() {
             CallManager.callState = state
             updateMetadata(call)
             updateNotification(call)
-            
+
             if (state == Call.STATE_ACTIVE) {
                 startTimer()
             } else if (state == Call.STATE_DISCONNECTED) {
@@ -70,16 +70,9 @@ class CallService : InCallService() {
         call.registerCallback(callCallback)
         updateMetadata(call)
         CallManager.updateCall(call)
-        
+
         updateNotification(call)
-        
-<<<<<<< HEAD
-        val intent = Intent(this, MainActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        }
-        startActivity(intent)
-=======
+
         val powerManager = getSystemService(android.content.Context.POWER_SERVICE) as android.os.PowerManager
         if (!powerManager.isInteractive) {
             val intent = Intent(this, MainActivity::class.java).apply {
@@ -88,7 +81,6 @@ class CallService : InCallService() {
             }
             startActivity(intent)
         }
->>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
     }
 
     override fun onCallRemoved(call: Call) {
@@ -112,20 +104,15 @@ class CallService : InCallService() {
                 "Active Calls",
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
-<<<<<<< HEAD
-                setSound(null, null)
-                enableVibration(false)
-=======
                 // We keep sound null as Telecom handles ringing, but allow vibration
                 enableVibration(true)
->>>>>>> f0831becf6ba0b60594645f7c9ffefd063fef8c1
             }
             notificationManager.createNotificationChannel(channel)
         }
 
         val number = call.details.handle?.schemeSpecificPart ?: ""
         val name = CallManager.lastName.ifBlank { number }
-        
+
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
@@ -179,10 +166,10 @@ class CallService : InCallService() {
             CallManager.supportedAudioRoutes = it.supportedRouteMask
         }
     }
-    
+
     companion object {
         private var instance: CallService? = null
-        
+
         fun endCall() {
             CallManager.currentCall?.disconnect()
         }
@@ -194,7 +181,7 @@ class CallService : InCallService() {
         fun rejectCall() {
             CallManager.currentCall?.disconnect()
         }
-        
+
         fun setMuted(muted: Boolean) {
             instance?.setMuted(muted)
         }
@@ -230,7 +217,7 @@ object CallManager {
     var currentCall by mutableStateOf<Call?>(null)
     var isMuted by mutableStateOf(false)
     var callState by mutableIntStateOf(STATE_IDLE)
-    
+
     var audioRoute by mutableIntStateOf(CallAudioState.ROUTE_EARPIECE)
     var supportedAudioRoutes by mutableIntStateOf(0)
 
